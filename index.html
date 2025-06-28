@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>User App</title>
+
+  <link rel="stylesheet"
+        href="style.css" />
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+  <h1>
+    Welcome
+    <span id="saludo"></span>
+  </h1>
+
+  <form id="formulario">
+
+    <input type="text"
+           id="nombre"
+           placeholder="Nombre"
+           required />
+
+    <input type="number"
+           id="edad"
+           placeholder="Edad"
+           required />
+
+    <input type="email"
+           id="email"
+           placeholder="Email"
+           required />
+
+    <button type="submit">Agregar usuario</button>
+
+  </form>
+
+  <h2>Lista de usuarios:</h2>
+
+  <div id="listaUsuarios"></div>
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
