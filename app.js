@@ -24,7 +24,7 @@ if (!nombreUsuario) {
   }
 }
 
-document.getElementById('saludo').textContent = `¡Hello, ${nombreUsuario}!`;
+document.getElementById('saludo').textContent = `${nombreUsuario}`;
 
 //* FUNCIÓN PARA MOSTRAR USUARIOS EN PANTALLA
 
