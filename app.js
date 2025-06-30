@@ -24,7 +24,7 @@ if (!nombreUsuario) {
   }
 }
 
-document.getElementById('saludo').textContent = `¡Hello, ${nombreUsuario}!`;
+document.getElementById('saludo').textContent = `${nombreUsuario}`;
 
 //* FUNCIÓN PARA MOSTRAR USUARIOS EN PANTALLA
 
@@ -101,3 +101,17 @@ formulario.addEventListener('submit', e => {
   }
 });
 
+const btnTema = document.getElementById('cambiarTema');
+
+btnTema.addEventListener('click', () => {
+  document.body.classList.toggle('tema-verde');
+
+  // Guardar preferencia en localStorage
+  const esVerde = document.body.classList.contains('tema-verde');
+  localStorage.setItem('temaVerde', esVerde);
+});
+
+// Al cargar, aplicar tema guardado
+if (localStorage.getItem('temaVerde') === 'true') {
+  document.body.classList.add('tema-verde');
+}
