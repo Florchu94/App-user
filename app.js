@@ -28,6 +28,8 @@ document.getElementById('saludo').textContent = `¡Hello, ${nombreUsuario}!`;
 
 //* FUNCIÓN PARA MOSTRAR USUARIOS EN PANTALLA
 
+//* FUNCIÓN PARA MOSTRAR USUARIOS EN PANTALLA
+
 function mostrarUsuarios() {
   const lista = document.getElementById('listaUsuarios');
   lista.innerHTML = '';
@@ -42,8 +44,29 @@ function mostrarUsuarios() {
       <p><i class="fas fa-envelope"></i> Email: ${usuario.email}</p>
     `;
 
+    // BOTÓN ELIMINAR 
+    const botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.classList.add('eliminar-btn');
+    botonEliminar.addEventListener('click', () => {
+      eliminarUsuario(usuario.id);
+    });
+
+    card.appendChild(botonEliminar);
     lista.appendChild(card);
   });
+  function eliminarUsuario(id) {
+  // Filtra el array para quitar al usuario con ese id
+  usuarios = usuarios.filter(usuario => usuario.id !== id);
+
+  // Actualiza el localStorage con el nuevo array
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+  // Vuelve a mostrar la lista actualizada
+  mostrarUsuarios();
+}
+
+
 }
 
 mostrarUsuarios();
@@ -69,6 +92,7 @@ formulario.addEventListener('submit', e => {
 
     usuarios.push(nuevoUsuario);
 
+
     //* Guardar en localStorage
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
@@ -76,3 +100,4 @@ formulario.addEventListener('submit', e => {
     formulario.reset();
   }
 });
+
