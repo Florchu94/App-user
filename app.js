@@ -34,9 +34,31 @@ function mostrarUsuarios() {
       <h3><i class="fas fa-user"></i> ${usuario.nombre}</h3>
       <p><i class="fas fa-calendar-alt"></i> Edad: ${usuario.edad}</p>
       <p><i class="fas fa-envelope"></i> Email: ${usuario.email}</p>
- `;
+    `;
+
+    // BOTÓN ELIMINAR
+    const botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.classList.add('eliminar-btn');
+    botonEliminar.addEventListener('click', () => {
+      eliminarUsuario(usuario.id);
+    });
+
+    card.appendChild(botonEliminar);
+>>>>>>> 34395500f75d45d6765a4ca434ee91135a65245b
     lista.appendChild(card);
   });
+}
+
+function eliminarUsuario(id) {
+  // Filtra el array para quitar al usuario con ese id
+  usuarios = usuarios.filter(usuario => usuario.id !== id);
+
+  // Actualiza el localStorage con el nuevo array
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+  // Vuelve a mostrar la lista actualizada
+  mostrarUsuarios();
 }
 
 mostrarUsuarios();
@@ -51,19 +73,19 @@ formulario.addEventListener("submit", (e) => {
   const edad = parseInt(document.getElementById("edad").value);
   const email = document.getElementById("email").value.trim();
 
-  // Validaciones nuevas
-  if (!nombre || !email || isNaN(edad)) {
-    alert("Por favor completá todos los campos correctamente.");
+  if (!nombre) {
+    alert('El nombre no puede estar vacío');
     return;
   }
 
-  if (!email.includes("@")) {
-    alert("El email debe contener '@'.");
+  if (!email.includes('@')) {
+    alert('El email debe contener un @');
     return;
   }
 
-  if (edad <= 0) {
-    alert("La edad debe ser mayor a 0.");
+  if (isNaN(edad) || edad <= 0) {
+    alert('La edad debe ser un número mayor a 0');
+>>>>>>> 34395500f75d45d6765a4ca434ee91135a65245b
     return;
   }
 
@@ -71,11 +93,16 @@ formulario.addEventListener("submit", (e) => {
     id: usuarios.length + 1,
     nombre,
     edad,
-    email
+
+    email,
   };
 
   usuarios.push(nuevoUsuario);
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+  //* Guardar en localStorage
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+>>>>>>> 34395500f75d45d6765a4ca434ee91135a65245b
   mostrarUsuarios();
   formulario.reset();
 });

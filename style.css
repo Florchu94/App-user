@@ -1,5 +1,5 @@
 body {
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: #f8f8fc;
   color: #2d3436;
   max-width: 700px;
@@ -70,6 +70,20 @@ button:hover {
   margin: 0.3rem 0;
 }
 
+.eliminar-btn {
+  background-color: #e74c3c; /* Rojo claro */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.eliminar-btn:hover {
+  background-color: #c0392b;
+}
 .usuario-card {
   transition: transform 0.2s, box-shadow 0.2s;
 }
