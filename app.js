@@ -28,8 +28,6 @@ document.getElementById('saludo').textContent = `${nombreUsuario}`;
 
 //* FUNCIÓN PARA MOSTRAR USUARIOS EN PANTALLA
 
-//* FUNCIÓN PARA MOSTRAR USUARIOS EN PANTALLA
-
 function mostrarUsuarios() {
   const lista = document.getElementById('listaUsuarios');
   lista.innerHTML = '';
@@ -44,7 +42,7 @@ function mostrarUsuarios() {
       <p><i class="fas fa-envelope"></i> Email: ${usuario.email}</p>
     `;
 
-    // BOTÓN ELIMINAR 
+    // BOTÓN ELIMINAR
     const botonEliminar = document.createElement('button');
     botonEliminar.textContent = 'Eliminar';
     botonEliminar.classList.add('eliminar-btn');
@@ -55,7 +53,9 @@ function mostrarUsuarios() {
     card.appendChild(botonEliminar);
     lista.appendChild(card);
   });
-  function eliminarUsuario(id) {
+}
+
+function eliminarUsuario(id) {
   // Filtra el array para quitar al usuario con ese id
   usuarios = usuarios.filter(usuario => usuario.id !== id);
 
@@ -64,9 +64,6 @@ function mostrarUsuarios() {
 
   // Vuelve a mostrar la lista actualizada
   mostrarUsuarios();
-}
-
-
 }
 
 mostrarUsuarios();
@@ -82,23 +79,35 @@ formulario.addEventListener('submit', e => {
   const edad = parseInt(document.getElementById('edad').value);
   const email = document.getElementById('email').value.trim();
 
-  if (nombre && edad && email) {
-    const nuevoUsuario = {
-      id: usuarios.length + 1,
-      nombre,
-      edad,
-      email,
-    };
-
-    usuarios.push(nuevoUsuario);
-
-
-    //* Guardar en localStorage
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-    mostrarUsuarios();
-    formulario.reset();
+  if (!nombre) {
+    alert('El nombre no puede estar vacío');
+    return;
   }
+
+  if (!email.includes('@')) {
+    alert('El email debe contener un @');
+    return;
+  }
+
+  if (isNaN(edad) || edad <= 0) {
+    alert('La edad debe ser un número mayor a 0');
+    return;
+  }
+
+  const nuevoUsuario = {
+    id: usuarios.length + 1,
+    nombre,
+    edad,
+    email,
+  };
+
+  usuarios.push(nuevoUsuario);
+
+  //* Guardar en localStorage
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+  mostrarUsuarios();
+  formulario.reset();
 });
 
 const btnTema = document.getElementById('cambiarTema');

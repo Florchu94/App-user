@@ -1,5 +1,5 @@
 body {
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: #f8f8fc;
   color: #2d3436;
   max-width: 700px;
@@ -71,7 +71,7 @@ button:hover {
 }
 
 .eliminar-btn {
-  background-color: #e74c3c;  /* Rojo claro */
+  background-color: #e74c3c; /* Rojo claro */
   color: white;
   border: none;
   padding: 8px 12px;
@@ -82,7 +82,7 @@ button:hover {
 }
 
 .eliminar-btn:hover {
-  background-color: #c0392b;  /* Rojo más oscuro al pasar el mouse */
+  background-color: #c0392b;
 }
 .usuario-card {
   transition: transform 0.2s, box-shadow 0.2s;
